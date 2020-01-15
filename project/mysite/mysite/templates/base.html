@@ -1,0 +1,30 @@
+{% load cms_tags menu_tags sekizai_tags static %}
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}mysite{% endblock title %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'components/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/site.css' %}" rel="stylesheet">
+    {% render_block "css" %}
+</head>
+
+<body>
+    {% cms_toolbar %}
+    {% show_menu 0 100 100 100 'menu.html' %}
+    <main>
+        <div class="container-fluid">
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+    <footer class="footer">
+        {% static_placeholder 'footer' %}
+    </footer>
+    <script src="{% static 'components/bootstrap/bootstrap.min.js' %}" async defer></script>
+    {% render_block "js" %}
+</body>
+
+</html>
